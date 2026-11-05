@@ -14,7 +14,7 @@
   <main class="notice">
     <a class="back" href="index.html">Back to the flyer</a>
     <h1>Privacy</h1>
-    <p>Last updated November 4, 2026. This is the one page where we're not kidding.</p>
+    <p>Last updated November 5, 2026. This is the one page where we're not kidding.</p>
 
     <h2>The short version</h2>
     <p>WhereTF is a private, invite-only family app. It only shares your location after you turn sharing on, and you can turn it off at any time.</p>
@@ -37,9 +37,9 @@
 
     <h2>Services involved</h2>
     <ul>
-      <li><strong>The WhereTF server</strong> stores the app's data.</li>
+      <li><strong>Amazon Web Services</strong> hosts the WhereTF server, which stores the app's data.</li>
       <li><strong>Google Firebase</strong> delivers push notifications, so it handles device tokens and the content of those alerts.</li>
-      <li><strong>Cloudflare</strong> hosts this website. Once the app is online, Cloudflare will also handle its login and network traffic.</li>
+      <li><strong>Cloudflare</strong> hosts this website, handles the app's email login, and carries network traffic to and from the app. It can process that traffic, including location updates, as it passes through.</li>
       <li><strong>Map providers</strong> supply map images, and they may see your network address and the map areas your device requests.</li>
       <li><strong>Apple or Google</strong> may process data as part of running your phone's operating system.</li>
     </ul>
