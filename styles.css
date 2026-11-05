@@ -1,0 +1,358 @@
+@font-face {
+  font-family: "Anton";
+  src: url("fonts/anton-latin-400-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("fonts/courier-prime-latin-400-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  src: url("fonts/courier-prime-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --ink: #000000;
+  --flyer: #ffe600;
+  --under: #ff5fa2;
+  --pole: #6f7276;
+  --paper: #ffffff;
+  --staple: #c9ccd1;
+  --poster: "Anton", Impact, "Arial Narrow", sans-serif;
+  --typed: "Courier Prime", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--pole);
+  color: var(--ink);
+  font: 400 1.0625rem/1.5 var(--typed);
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* The flyer, stapled over an older pink one */
+.board {
+  position: relative;
+  width: min(100% - 2rem, 46rem);
+  margin: 2.5rem auto 4rem;
+}
+
+.board::before {
+  content: "";
+  position: absolute;
+  inset: 1.5rem -0.75rem 5rem;
+  background: var(--under);
+  transform: rotate(-0.9deg);
+}
+
+.flyer {
+  position: relative;
+  container-type: inline-size;
+  padding: clamp(1.5rem, 5vw, 3.25rem) clamp(1.25rem, 5vw, 3.25rem) 0;
+  background: var(--flyer);
+  transform: rotate(0.35deg);
+}
+
+.flyer::before,
+.flyer::after {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  width: 1.4rem;
+  height: 0.2rem;
+  background: var(--staple);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 55%);
+}
+
+.flyer::before {
+  left: 1rem;
+  transform: rotate(-8deg);
+}
+
+.flyer::after {
+  right: 1rem;
+  transform: rotate(5deg);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--poster);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.missing {
+  /* Scales with the flyer so the word always fills its width */
+  font-size: 30.5cqw;
+  line-height: 0.98;
+  text-align: center;
+}
+
+.who {
+  margin: 0.4rem 0 1.5rem;
+  font: 400 clamp(1.8rem, 7vw, 3.1rem)/1.05 var(--poster);
+  text-align: center;
+}
+
+.photo {
+  display: block;
+  width: min(100%, 22rem);
+  height: auto;
+  margin: 0 auto 2rem;
+}
+
+.facts {
+  margin: 0 0 2rem;
+  border-top: 3px solid var(--ink);
+}
+
+.facts div {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 0.25rem 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.facts dt {
+  font-weight: 700;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.reward {
+  margin: 0 0 2.75rem;
+  padding: 1.25rem;
+  background: var(--ink);
+  color: var(--flyer);
+  text-align: center;
+}
+
+.reward h2 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(2.4rem, 11vw, 4.5rem);
+}
+
+.reward p {
+  margin: 0 auto;
+  max-width: 34rem;
+}
+
+section {
+  margin-bottom: 2.75rem;
+  scroll-margin-top: 1rem;
+}
+
+section > h2 {
+  margin-bottom: 0.9rem;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+}
+
+section p {
+  max-width: 64ch;
+}
+
+.yells details {
+  border-top: 1px solid var(--ink);
+}
+
+.yells details:last-child {
+  border-bottom: 1px solid var(--ink);
+}
+
+.yells summary {
+  padding: 0.75rem 0;
+  font: 400 clamp(1.25rem, 4.5vw, 1.65rem)/1.15 var(--poster);
+  cursor: pointer;
+}
+
+.yells p {
+  margin: 0 0 1rem;
+}
+
+.steps {
+  margin: 0;
+  padding-left: 1.75rem;
+}
+
+.steps li {
+  margin-bottom: 0.65rem;
+  padding-left: 0.25rem;
+}
+
+/* Tear-off tabs along the bottom edge of the flyer */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin: 0 calc(clamp(1.25rem, 5vw, 3.25rem) * -1);
+  padding: 0;
+  border-top: 2px dashed var(--ink);
+  list-style: none;
+}
+
+.tabs li {
+  flex: 1 1 0;
+  min-width: 0;
+  border-right: 2px dashed var(--ink);
+}
+
+.tabs li:last-child {
+  border-right: 0;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14rem;
+  padding: 0.75rem 0.15rem;
+  color: inherit;
+  font: 400 clamp(1.05rem, 3.5vw, 1.45rem)/1.05 var(--poster);
+  text-align: center;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  transform-origin: top center;
+  transition: transform 160ms ease-out;
+}
+
+a.tab:hover,
+a.tab:focus-visible {
+  transform: rotate(-3deg) translateY(0.35rem);
+}
+
+.tab small {
+  display: block;
+  font: 400 0.85rem/1.2 var(--typed);
+}
+
+.tab.soon {
+  opacity: 0.72;
+}
+
+/* One tab is already gone, because of course it is */
+.tabs li.torn {
+  background: var(--pole);
+}
+
+.torn .tab {
+  color: var(--paper);
+  font: 400 0.82rem/1.15 var(--typed);
+}
+
+.flyer-end {
+  position: relative;
+  margin-top: 1.5rem;
+  color: var(--paper);
+  text-align: center;
+  font-size: 0.9375rem;
+}
+
+/* Privacy page: same pole, no jokes in the rules */
+.notice {
+  position: relative;
+  width: min(100% - 2rem, 42rem);
+  margin: 2.5rem auto 4rem;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: var(--paper);
+}
+
+.notice h1 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(2.6rem, 10vw, 4rem);
+}
+
+.notice h2 {
+  margin: 2rem 0 0.5rem;
+  font-size: 1.6rem;
+}
+
+.notice p,
+.notice ul {
+  margin: 0 0 1rem;
+}
+
+.notice li {
+  margin-bottom: 0.35rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 34rem) {
+  body {
+    font-size: 1rem;
+  }
+
+  .board {
+    width: calc(100% - 1rem);
+    margin-top: 1rem;
+  }
+
+  .board::before {
+    inset: 1rem -0.25rem 5.5rem;
+  }
+
+  .facts div {
+    grid-template-columns: 1fr;
+  }
+
+  .tab {
+    height: 12.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .tab {
+    transition: none;
+  }
+
+  a.tab:hover,
+  a.tab:focus-visible {
+    transform: none;
+  }
+}
+
+@media print {
+  body {
+    background: var(--paper);
+  }
+
+  .board::before {
+    display: none;
+  }
+}
