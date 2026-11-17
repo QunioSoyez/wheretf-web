@@ -1,0 +1,4 @@
+# Cloudflare Pages config for the wheretf-web project.
+# Only public/ is published; the repo root (README, .github, this file) is not.
+name = "wheretf-web"
+pages_build_output_dir = "public"
